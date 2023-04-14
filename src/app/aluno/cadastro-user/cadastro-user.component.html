@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px; background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Cadastro de Usuários</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " routerLink="/menu"><strong>Menu</strong></a>
+
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+    </div>
+</nav>
+
+
+<form [formGroup]="CadastroUserForm" (submit)="submit()">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col form-group">
+                <label>Usuário:</label>
+                <input class="form-control" type="text" formControlName="usuario">
+                <div class="row mt-3">
+                    <div class="col-md-6" *ngIf="!fechar">
+                        <label>Senha:</label>
+                        <input class="form-control" type="text" formControlName="senha" id="senha">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label>Perfil:</label>
+
+                        <select class="form-control" formControlName="perfil"><br>
+                            <option value="">Clique para selecionar o perfil</option>       
+                            <option value="adm">Administrador</option>
+                            <option value="user">Usuário</option>
+                           </select>
+                    </div>
+
+                </div>
+                <div class="form-group buttons text-center mt-5">
+                    <button class="btn btn-success" type="submit">Enviar</button>
+                    <button type="button" class="btn btn-primary ml-2" (click)="limpar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<form [formGroup]="CadastroUserForm" *ngIf="!fechar">
+
+    <div class="container text-center mt-2" style="padding-bottom: 20vh;">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Perfil</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aluno of ListaUsers">
+                    <td>{{aluno.usuario}}</td>
+                    <td>{{aluno.perfil }}</td>
+                    <td>
+
+                        <button class="btn btn-outline-primary ml-2" (click)="editarAluno(aluno.id)">Editar</button>
+                        <button class="btn btn-outline-danger ml-2" (click)="deletarAluno(aluno.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

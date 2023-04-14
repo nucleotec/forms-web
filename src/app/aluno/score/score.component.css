@@ -1,0 +1,22 @@
+#escala:hover + .imgEscala{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+}
+.imgEscala{
+    display: none;
+}
+.imgEscala:hover{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+}
+.ntg{
+    display: none;
+}
+.apr{
+    display: flex;
+    justify-content: end;
+}

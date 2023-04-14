@@ -1,0 +1,138 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px; background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Pacientes Cadastrados</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " routerLink="/menu"><strong>Menu</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/score'"><strong>Score</strong></a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+    </div>
+</nav>
+
+
+<form [formGroup]="alunoForm">
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label>Nome:</label>
+                        <input class="form-control" type="text" formControlName="nome" disabled><br>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Score Final:</label>
+                        <input class="form-control" type="text" formControlName="scoreFinal" id="score" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <input class="form-control" type="text" formControlName="id" id="id" hidden>
+                    </div>
+                    <a style="color: blue; font-weight:bold; cursor:pointer" (click)="verid()">Verificar Avaliação</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="form-group buttons text-center">
+
+    </div>
+
+
+
+
+
+</form>
+
+
+    <div class="px-0" style="margin-bottom: 5vh;">
+        <div style="
+            text-align: center; 
+            margin-right:auto; 
+            margin-left:auto; 
+            " *ngIf="riscobaixo">
+            <img src="../../../assets/Riscobaixo.png" width="100%" style="max-width: 80%;min-width: 300px;" >
+            <div class="mt-3" style="display: flex; justify-content: center;">
+                <button class="btn btn-warning" (click)="troca('improvavel')"  type="button" style="display: flex;">
+                    <div>
+                        <p class="mb-0 pt-1">Conduta a seguir</p>
+                    </div>
+                    <span class="icon icon-bike"></span>
+
+                </button>
+            </div>
+        </div>
+
+        <div style="
+        text-align: center; 
+        margin-right:auto; 
+        margin-left:auto; " *ngIf="riscobaixomedio">
+
+            <img src="../../../assets/baixoMedio.png" width="100%" style="max-width: 80%;min-width: 300px;" >
+            <!-- <button class="btn btn-primary ml-2" [routerLink]="'/score'">Voltar</button> -->
+            <div class="mt-3" style="display: flex; justify-content: center;">
+                <button class="btn btn-warning" (click)="troca('pouco-provavel')"  type="button" style="display: flex;">
+                    <div>
+                        <p class="mb-0 pt-1">Conduta a seguir</p>
+                    </div>
+                    <span class="icon icon-bike"></span>
+
+                </button>
+            </div>
+        </div>
+
+        <div style="
+        text-align: center; 
+        margin-right:auto; 
+        margin-left:auto;" *ngIf="riscomedioalo">
+
+            <img src="../../../assets/medioAlto.png" width="100%" style="max-width: 80%;min-width: 300px;" >
+            <div class="mt-3" style="display: flex; justify-content: center;">
+                <button class="btn btn-warning" (click)="troca('provavel')"  type="button" style="display: flex;">
+                    <div>
+                        <p class="mb-0 pt-1">Conduta a seguir</p>
+                    </div>
+                    <span class="icon icon-bike"></span>
+
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; 
+        margin-right:auto; 
+        margin-left:auto;" *ngIf="riscoalto">
+
+            <img src="../../../assets/Alto.png" width="100%" style="max-width: 80%;min-width: 300px;" >
+            <div class="mt-3" style="display: flex; justify-content: center;">
+                <button class="btn btn-warning" (click)="troca('muito-provavel')"  type="button" style="display: flex;">
+                    <div>
+                        <p class="mb-0 pt-1">Conduta a seguir</p>
+                    </div>
+                    <span class="icon icon-bike"></span>
+
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    
+
+<div style="padding-bottom: 20vh; display: flex; justify-content: center;">
+    <button class="btn btn-primary ml-2" [routerLink]="'/score'">Voltar</button>
+</div>

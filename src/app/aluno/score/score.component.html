@@ -1,0 +1,287 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px;  background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Scores / Gráficos</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item " *ngIf="menu">
+                <a class="nav-link " [routerLink]="'/menu'"><strong>Menu</strong></a>
+
+            </li>
+
+            <li class="nav-item " *ngIf="menu">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+
+            <form class="form-inline my-2 my-lg-0" *ngIf="menu">
+                <input class="form-control mr-sm-2 " style="width: 300px;" type="search" placeholder="Pesquise aqui o nome do paciente" [(ngModel)]="searchText" aria-label="Search">
+            </form>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+    </div>
+</nav>
+<!-- <div class="container mt-5" style="text-align: center;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3 mt-1" style="margin-right: 0;">
+                    <button type="button" *ngIf="grafico" (click)="limpar()" class="mr-1 btn btn-danger">Pausar Atualização</button>
+                </div>
+                <div class="col-md-3 mt-1" style="margin-right: 0;margin-left:0">
+                    <button type="button" *ngIf="grafico" (click)="ocultarDados()" class="mr-1 btn btn-warning">Ocultar Dados</button>
+                </div>
+                <div class="col-md-3 mt-1" style="margin-right: 0;margin-left:0">
+                    <button type="button" *ngIf="grafico" (click)="MostrarDados()" class="mr-1 btn btn-success">Mostrar Dados</button>
+                </div>
+                <div class="col-md-3 mt-1" style="margin-right: 0;margin-left:0">
+                    <button type="button" (click)="limparNavegacao()" *ngIf="grafico" class="mr-1 btn btn-primary">Voltar</button>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</div> -->
+
+
+<!-- Grafico de linhas -->
+<div id="chart " class="container text-center mt-4" *ngIf="grafico">
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke" [title]="chartOptions.title"></apx-chart>
+</div>
+<!-- <div  class="my-3" style="width: 100%;display: flex; justify-content: center;">
+    <button type="button" *ngIf="grafico" (click)="limpar()" class="mr-1 btn btn-danger">Pausar Atualização</button>
+</div> -->
+
+
+
+<div  class="my-3"  style="width: 100%;display: flex; justify-content: center;" *ngIf="grafico">
+    <div id="escala" style="display: block; text-align: center;">
+        <a class="nav-link " data-bs-toggle="modal" data-bs-target="#exampleModal" href="">Escala de probabilidade</a>
+    </div>
+    <div class="imgEscala">
+        
+        <img src="../../../assets/Escala da Probabilidade.png" height="200px" alt="Escala da probabilidade"  srcset="">
+    </div>
+</div>
+
+
+
+<div  class="my-3" style="width: 100%;display: flex; justify-content: center;">
+    <button type="button" *ngIf="grafico" (click)="MostrarDados()" class="mr-1 btn btn-success" >{{textButton}}</button>
+</div>
+<!-- <div style="padding-bottom: 20vh;">
+    <form [formGroup]="alunoForm" *ngIf="ocult">
+
+        <div class="container text-center pb-5 table-responsive">
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let score of ListaScore | filter:searchText">
+                        <td>{{score.nome}}</td>
+                        <td>{{score.data }}</td>
+
+                        <td>
+                            <button class="btn btn-outline-primary ml-2 mt-1" (click)="verProbabilidade(score.id)" *ngIf="grafico1" style="font-size: 1em;">Verificar</button>
+                            <button class="btn btn-outline-success ml-2 mt-1" (click)="carregamento(score.nome)" style="font-size: 1em;">Gráfico</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <div class="my-3" style="width: 100%;display: flex; justify-content: center;">
+        <button type="button" (click)="limparNavegacao()" *ngIf="grafico" class="mr-1 btn btn-primary">Voltar</button>
+    </div>
+</div> -->
+<!-- MODIFCADO -->
+<!-- <div style="padding-bottom: 20vh;" class="container">
+    <form [formGroup]="PacienteForm" *ngIf="ocult">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item" *ngFor="let paciente of ListaPacientes; index as i">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" #paciente type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{paciente.nome}}
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="container text-center pb-5 table-responsive">
+                            <table class="table table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Opções</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let score of ListaScore ">
+                                        <ng-container *ngIf="paciente.nome == score.nome">
+                                            <td>{{score.nome}}</td>
+                                            <td>{{score.data}}</td>
+                    
+                                            <td>
+                                                <button class="btn btn-outline-primary ml-2 mt-1" (click)="verProbabilidade(score.id)" *ngIf="grafico1" style="font-size: 1em;">Verificar</button>
+                                                <button class="btn btn-outline-success ml-2 mt-1" (click)="carregamento(score.nome)" style="font-size: 1em;">Gráfico</button>
+                                            </td>
+                                        </ng-container>
+                                        
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+    </form>
+    <div class="my-3" style="width: 100%;display: flex; justify-content: center;">
+        <button type="button" (click)="limparNavegacao()" *ngIf="grafico" class="mr-1 btn btn-primary">Voltar</button>
+    </div>
+</div> -->
+<div style="padding-bottom: 20vh; " class="row justify-content-center mx-0">
+    <div class="col-8" >
+        <form *ngIf="ocult">
+            <ng-container *ngIf="grafico">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {{pacienteEsp}}
+                    </div>
+                    <div class="card-body" >
+                        
+                        <div style="display: flex; justify-content: space-around;">
+                            <div>
+                                <p><strong>Data</strong></p>
+                            </div>
+                            <div>
+                                <p><strong>Ação</strong></p>
+                            </div>
+                        </div>
+                        <ng-container *ngFor="let score of ListaScore ">
+                            <div style="display: flex; justify-content: space-around;"> 
+                                <div style="display: flex; align-items: center;">
+                                    <p class="m-0">{{score.data}}</p>
+                                </div>
+                                <div>
+                                    
+                                    <button class="btn btn-outline-primary my-1"  (click)="verProbabilidade(score.id)"  style="font-size: 1em;">Verificar</button>
+                                </div>
+                            </div>
+                            
+                        </ng-container>
+                        
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!grafico">
+                <div class="card text-center" *ngFor="let paciente of ListaPacientes | filter:searchText" >
+                    <div class="card-header">
+                        {{paciente.nome}}
+                    </div>
+                    <div class="card-body" >
+                        <div class="mb-3">
+                            <div style="display: flex; justify-content: space-around;">
+                                <div>
+                                    <p><strong>Data</strong></p>
+                                </div>
+                                <div>
+                                    <p><strong>Ação</strong></p>
+                                </div>
+                            </div>
+                            <ng-container *ngFor="let score of ListaScore ">
+                                <div style="display: flex; justify-content: space-around;" *ngIf="paciente.nome == score.nome"> 
+                                    <div style="display: flex; align-items: center;">
+                                        <p class="m-0">{{score.data}}</p>
+                                    </div>
+                                    <div>
+                                        
+                                        <button class="btn btn-outline-primary my-1"  (click)="verProbabilidade(score.id)" *ngIf="grafico1" style="font-size: 1em;">Verificar</button>
+                                    </div>
+                                </div>
+                                
+                            </ng-container>
+                        </div>
+                        <button class="btn btn-outline-success ml-2 mt-1" (click)="carregamento(paciente.nome)" style="font-size: 1em;">Gráfico</button>
+                    </div>
+                </div>
+            </ng-container>
+
+
+            <!-- <div class="accordion" id="accordionExample">
+                <div class="accordion-item" >
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" #paciente type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{paciente.nome}}
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="container text-center pb-5 table-responsive">
+                                <table class="table table-hover ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Data</th>
+                                            <th scope="col">Opções</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let score of ListaScore ">
+                                            <ng-container *ngIf="paciente.nome == score.nome">
+                                                <td>{{score.nome}}</td>
+                                                <td>{{score.data}}</td>
+                        
+                                                
+                                            </ng-container>
+                                            
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+            
+        </form>
+    </div>
+    <div class="my-3" style="width: 100%;display: flex; justify-content: center;">
+        <button type="button" (click)="limparNavegacao()" *ngIf="grafico" class="mr-1 btn btn-primary">Voltar</button>
+    </div>
+</div>
+<!-- MODAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: center;">
+                <img src="../../../assets/Escala da Probabilidade.png"  alt="Escala da probabilidade"  srcset="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

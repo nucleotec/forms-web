@@ -1,0 +1,66 @@
+.container {
+    height: 100vh;
+}
+
+.border {
+    border: 1px solid red;
+}
+
+.titulo {
+    width: 100%;
+    background-color: #360;
+    line-height: 50px;
+    font-size: 18px;
+    color: #FFF;
+    text-align: center
+}
+
+.subtitulo {
+    background-color: #009CAB;
+    width: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    color: #FFF;
+    text-align: center
+}
+
+.aluno {
+    background-color: #FFD08E;
+    width: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    color: rgb(2, 2, 2);
+    text-align: center
+}
+
+.corcaixaAluno {
+    background-color: #FFD08E;
+}
+
+.corcaixaEscola {
+    background-color: #FFFBCE;
+}
+
+.escola {
+    background-color: #FFFBCE;
+    width: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    color: rgb(2, 2, 2);
+    text-align: center
+}
+
+
+/* .corfundoContainer {
+    background-color: #F4FCEA;
+} */
+
+.botaoEnviar {
+    height: 85%;
+    width: 100%;
+    background-color: #009CAB;
+    line-height: 35px;
+    font-size: 18px;
+    color: #FFF;
+    text-align: center
+}

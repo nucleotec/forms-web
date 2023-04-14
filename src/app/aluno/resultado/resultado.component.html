@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px; background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Avaliação do paciente</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " routerLink="/menu"><strong>Menu</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/score'"><strong>Score</strong></a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+    </div>
+</nav>
+<div class="container mt-5" style="padding-bottom: 20vh;">
+    <!-- <app-teste [conduta]="conduta"></app-teste> -->
+    <app-conduta [conduta]="conduta"></app-conduta>
+    <div class="mt-5">
+        <h2>Siglas</h2>
+        <p><strong>Uso de SPAs:</strong> Uso de substâncias psicoativas (álcool e outras drogas)</p>
+        <p><strong>TS:</strong> Tentativa de suicídio</p>
+        <p><strong>ESF:</strong> Estratégia saúde da família</p>
+        <p><strong>CAPS:</strong> Centro de atenção psicossocial</p>
+        <p><strong>ACS:</strong> Agente comunitário de saúde</p>
+        <p><strong>UBS:</strong> Unidade básica de saúde</p>
+    </div>
+</div>
+
+<!-- <app-conduta-improvavel></app-conduta-improvavel> -->

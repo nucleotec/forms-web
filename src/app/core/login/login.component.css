@@ -1,0 +1,28 @@
+#login .container #login-row #login-column #login-box {
+    margin-top: 100px;
+    max-width: 600px;
+    height: 325px;
+    background-color: #EAEAEA;
+    opacity: 0.8;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+}
+
+#fundo {
+    background-image: url('../../../assets/especialidades-medicas.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    /*  text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 100em;
+    padding-bottom: 12.5em;
+    padding-top: 10em; */
+}

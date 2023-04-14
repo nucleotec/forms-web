@@ -1,0 +1,38 @@
+<div >
+    <div class="card" *ngIf="conduta  == 'improvavel'">
+        <div class="card-body">
+            <h1 class="card-title">Improvável</h1>
+            <div class="card-text">
+                <p>Ideação suicida, sem planejamento e sem histórico de tentativa prévia, sem uso de SPAs e com bom suporte social. Conduta: Seguimento na ESF ou ambulatorial mantendo contato familiar por telefonema ou visitas do ACS.</p>
+                <p>Iniciar tratamento medicamentoso com cuidados em perfil farmacológico e manejo (dispensar medicação por períodos curtos). Orientar familiares e amigos para manutenção do cuidado e vigilância.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="conduta  == 'pouco-provavel'">
+        <div class="card-body">
+            <h1 class="card-title">Pouco provável</h1>
+            <div class="card-text">
+                <p>Ideias de morte sem planejamento, associados a tentativas prévias, em pacientes sem histórico de impulsividade ou uso de SPAs. Conduta: Encaminhar ao CAPS e comunicar a ESF para manutenção de busca ativa. Cuidado ampliado com todos os dispositivos e ferramentas que possam oferecer risco. Iniciar tratamento medicamentoso com cuidados em perfil farmacológico e cuidados em manejo (dispensar medicação para períodos curtos). Orientar familiares e amigos para manutenção do cuidado e vigilância.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" *ngIf="conduta  == 'provavel'">
+        <div class="card-body">
+            <h1 class="card-title">Provável</h1>
+            <div class="card-text">
+                <p>Paciente com ideação suicida persistente e com histórico de tentativas prévias com planejamento e acesso aos instrumentos para ação. Presença de comportamento impulsivo, pensamentos rígidos em relação à ideia, desespero, <i>delirium</i>, uso de SPAs, alucinações, delírios, desorganização de comportamento e agitação psicomotora. Conduta: Internação. Iniciar tratamento medicamentoso supervisionado. Cuidado ampliado com todos os dispositivos e ferramentas que possam oferecer risco. Comunicação ao CAPS e equipe de ESF para seguimento posterior. Pode ser considerada a internação domiciliar quando considerados os riscos envolvidos e houver fatores de proteção assim como família presente.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="conduta  == 'muito-provavel'">
+        <div class="card-body">
+            <h1 class="card-title">Muito provável </h1>
+            <div class="card-text">
+                <p>Tentativa de suicídio é considerada emergência. A conduta é promover redução do risco imediato, controle de fatores predisponentes e acompanhamento para reavaliação de risco. Indicação imediata de internação. Nos casos de pessoas sozinhas trazidas por terceiros e não colaborativas é necessário maior tempo de permanência para compreensão adequada dos riscos envolvidos.</p>
+            </div>
+        </div>
+    </div>
+</div>

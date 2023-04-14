@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px; background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Pacientes Cadastrados</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/menu'"><strong>Menu</strong></a>
+
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/score'"><strong>Score</strong></a>
+            </li>
+            <li class="nav-item ">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" [(ngModel)]="searchText" aria-label="Search">
+                </form>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<form [formGroup]="PacienteForm">
+
+    <div class="container text-center table-responsive">
+
+        <table class="table table-hover" *ngIf="selecionado">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data de Nascimento</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aluno of ListaPacientes | filter:searchText ">
+                    <td><input id="nome" value="{{aluno.nome}}"></td>
+                    <td><input id="dataNascimento" value="{{aluno.dataNascimento}}"></td>
+                    <td>
+
+                        <!-- <button class="btn btn-outline-primary ml-2" (click)="carregamento(aluno.nome)">Editar</button> -->
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</form>
+<!-- <div><button (click)="limpar()">Pausar Atualização</button></div>
+<div><button (click)="verDados()" *ngIf="btnVer">Ver dados</button></div>
+<div><button (click)="fecharDados()" *ngIf="btnOcultar">Ocultar dados</button></div> -->
+<!-- Grafico de linhas -->
+<div id="chart " class="container text-center" *ngIf="grafico">
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke" [title]="chartOptions.title"></apx-chart>
+</div>

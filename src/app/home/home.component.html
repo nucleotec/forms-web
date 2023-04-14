@@ -1,0 +1,126 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px;  background-color:#E0FFFF">
+    <a class="navbar-brand nome" routerLink="/menu" style="font-size: 1em;"><strong>Menu</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " routerLink="/score"><strong>Score</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " *ngIf="usuario == 'adm' " routerLink="/cadastro-usuario"><strong>Usuários</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " data-bs-toggle="modal" data-bs-target="#exampleModal" href=""><strong>Avaliar Paciente</strong></a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link " (click)="logout()" href=""><strong>Sair</strong></a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+
+    </div>
+</nav>
+
+
+
+<div class="container mt-5" style="text-align: center;">
+    <h2 style="display: inline;">Bem-vindo!</h2>
+</div>
+
+<div class="container mt-1" style="padding-bottom:20vh; box-sizing: border-box;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-3 px-0" style="display: flex;justify-content: center;">
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="" style="align-self: center;">
+                        <img src="../../assets/oncologico.png" class="img-fluid" style="height: 250px;">
+                    </a>
+                    <!-- <p style="text-align: center; margin:0; padding:0">Avaliar</p> -->
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Avaliar Paciente</button> -->
+                </div>
+                <div class="col-lg-3 px-0" style="display: flex;justify-content: center;">
+                    <a [routerLink]="'/cadastro/paciente'"><img src="../../assets/cadastrarpaciente.png" img-fluid style="height: 250px;"></a>
+                    <!-- <p style="text-align: center; margin:0; padding:0">Avaliar</p> -->
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Avaliar Paciente</button> -->
+                </div>
+                <div class="col-lg-3 px-0" style="display: flex;justify-content: center;">
+                    <a [routerLink]="'/lista/paciente'"><img src="../../assets/listarPaciente.png" img-fluid style="height: 250px;"></a>
+                    <!-- <p style="text-align: center; margin:0; padding:0">Avaliar</p> -->
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Avaliar Paciente</button> -->
+                </div>
+                <div class="col-lg-3 px-0" style="display: flex;justify-content: center;">
+                    <a [routerLink]="'/score'"><img src="../../assets/scores.png" img-fluid style="height: 250px;"></a>
+                    <!-- <p style="text-align: center; margin:0; padding:0">Avaliar</p> -->
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Avaliar Paciente</button> -->
+                </div>
+            </div>
+
+
+            <!-- <button type="button" [routerLink]="'/cadastro/paciente'" class="btn btn-success btn-lg btn-block">Cadastrar Paciente</button>
+            <button type="button" [routerLink]="'/lista/paciente'" class="btn btn-warning btn-lg btn-block">Pacientes Cadastrados</button> -->
+
+        </div>
+        <!-- <div class="col-md-3">
+            <button type="button" [routerLink]="'/score'" class="btn btn-info btn-lg btn-block">Scores</button>
+
+        </div> -->
+    </div>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Avaliar Serviço Oncológico</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="PacienteForm">
+                    <form class="form-inline my-2 my-lg-0 pb-2" style="justify-content: end;">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" [(ngModel)]="searchText" aria-label="Search">
+                    </form>
+                    <div class="container text-center table-responsive" style="max-height: 50vh;">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Data de Nascimento</th>
+                                    <th scope="col">Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let paciente of ListaPacientes | filter:searchText">
+                                    <td>{{paciente.nome}}</td>
+                                    <td>{{paciente.dataNascimento }}</td>
+                                    <td>
+
+                                        <button class="btn btn-outline-primary ml-2" (click)="editarAluno(paciente.nome)" data-bs-dismiss="modal">Avaliar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

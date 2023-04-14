@@ -1,0 +1,18 @@
+.linkC{
+    color: rgb(0, 123, 255);
+    cursor: pointer;
+    text-decoration-color: rgb(0, 123, 255);
+}
+.linkC:hover{
+    text-decoration-line: underline;
+}
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+.icon-bike {
+    background-image: url("../../../assets/report_problem_black_24dp.svg");
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}

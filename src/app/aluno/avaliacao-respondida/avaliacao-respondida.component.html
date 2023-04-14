@@ -1,0 +1,706 @@
+<nav class="navbar navbar-expand-lg navbar-light bg" style="padding-left: 20px; background-color:#E0FFFF">
+    <a class="navbar-brand nome" href="#" style="font-size: 1em;"><strong>Avaliação do paciente</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link " routerLink="/menu"><strong>Menu</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/cadastro/paciente'"><strong>Cadastrar Paciente</strong></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " [routerLink]="'/score'"><strong>Score</strong></a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-4">
+            <img src="../../assets/logo.png" img-fluid>
+        </form>
+    </div>
+</nav>
+
+
+
+
+<!-- <div class="container  corfundoContainer">
+
+    <div class="row text-center ">
+        <div class="col-md-2  titulo" style="padding: 0; margin:0">
+            <img src="../../../assets/lanche.png" height="100" img-fluid>
+
+        </div>
+
+        <div class="col-md-8  titulo d-flex  justify-content-center align-items-center" style="padding: 0; margin:0">
+            <h1 class="" style="padding-top: auto; margin:0;padding-bottom: auto;">Bem vindo a Cantina Univás</h1>
+
+        </div>
+        <div class="col-md-2  titulo" style="padding: 0; margin:0">
+            <img src="../../../assets/lanche2.png" height="100" img-fluid>
+        </div>
+
+    </div> -->
+
+
+
+<form [formGroup]="alunoForm" (submit)="submit1()">
+    <div class="container">
+        
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <label class="mt-2">Nome completo do paciente:</label>
+                        <input type="text" formControlName="nome" class="form-control" readonly>
+                    </div>
+                    <div class="col-md-5  mt-3">
+                        <label class="mt-2">Data do atendimento:</label>
+                        <input [textMask]="{mask: maskAtendimento}" [(ngModel)]="myatendimento" type="text" formControlName="data" class="form-control" placeholder="dd/mm/aaaa" readonly>
+
+                    </div>
+                    <div class="col-md-1" style="text-align: center;margin-top:36px;">
+                        <button class="form-control" type="button" style="background-color:transparent; border:none" (click)="print()"><img src="../../../assets/print.png" width="30"></button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover  mt-3" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fatores de Proteção</th>
+                                <th scope="col">Intensidade: alta</th>
+                                <th scope="col">Intensidade: média</th>
+                                <th scope="col">Intensidade: baixa</th>
+                                <th scope="col">Intensidade: Não se Aplica</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Flexibilidade cognitiva:</td>
+                                <td><input type="radio" name="fator1" [value]="-9" formControlName="fator1" blocked></td>
+                                <td>
+                                    <input type="radio" name="fator1" [value]="-4.5" formControlName="fator1" blocked>
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator1" [value]="-2.25" formControlName="fator1" blocked>
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator1" [value]="0" formControlName="fator1" blocked>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Aceitação de aconselhamento e busca de ajuda:</td>
+                                <td disable><input type="radio" name="fator2" [value]="-10" formControlName="fator2"></td>
+                                <td>
+                                    <input type="radio" name="fator2" [value]="-5" formControlName="fator2">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator2" [value]="-2.5" formControlName="fator2">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator2" [value]="0" formControlName="fator2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ser comunicativo:</td>
+                                <td><input type="radio" name="fator3" [value]="-7" formControlName="fator3"></td>
+                                <td>
+                                    <input type="radio" name="fator3" [value]="-3.5" formControlName="fator3">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator3" [value]="-1.75" formControlName="fator3">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator3" [value]="0" formControlName="fator3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Boa avaliação de realidade:</td>
+                                <td><input type="radio" name="fator4" [value]="-8" formControlName="fator4"></td>
+                                <td>
+                                    <input type="radio" name="fator4" [value]="-4" formControlName="fator4">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator4" [value]="-2" formControlName="fator4">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator4" [value]="0" formControlName="fator4">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Capacidade para solução de problemas:</td>
+                                <td><input type="radio" name="fator5" [value]="-10" formControlName="fator5"></td>
+                                <td>
+                                    <input type="radio" name="fator5" [value]="-5" formControlName="fator5">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator5" [value]="-2.5" formControlName="fator5">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator5" [value]="0" formControlName="fator5">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bom relacionamento interpessoal:</td>
+                                <td><input type="radio" name="fator6" [value]="-7" formControlName="fator6"></td>
+                                <td>
+                                    <input type="radio" name="fator6" [value]="-3.5" formControlName="fator6">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator6" [value]="-1.75" formControlName="fator6">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator6" [value]="0" formControlName="fator6">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Senso de responsabilidade com família:</td>
+                                <td><input type="radio" name="fator7" [value]="-9" formControlName="fator7"></td>
+                                <td>
+                                    <input type="radio" name="fator7" [value]="-4.5" formControlName="fator7">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator7" [value]="-2.25" formControlName="fator7">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator7" [value]="0" formControlName="fator7">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Presença de crianças em casa:</td>
+                                <td><input type="radio" name="fator8" [value]="-7" formControlName="fator8"></td>
+                                <td>
+                                    <input type="radio" name="fator8" [value]="-3.5" formControlName="fator8">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator8" [value]="-1.75" formControlName="fator8">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator8" [value]="0" formControlName="fator8">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pais atenciosos e presentes e família envolvida e apoiadora:</td>
+                                <td><input type="radio" name="fator9" [value]="-9" formControlName="fator9"></td>
+                                <td>
+                                    <input type="radio" name="fator9" [value]="-4.5" formControlName="fator9">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator9" [value]="-2.25" formControlName="fator9">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator9" [value]="0" formControlName="fator9">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Boa integração social:</td>
+                                <td><input type="radio" name="fator10" [value]="-10" formControlName="fator10"></td>
+                                <td>
+                                    <input type="radio" name="fator10" [value]="-5" formControlName="fator10">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator10" [value]="-2.5" formControlName="fator10">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator10" [value]="0" formControlName="fator10">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Adesão a normas socialmente compartilhados:</td>
+                                <td><input type="radio" name="fator11" [value]="-8" formControlName="fator11"></td>
+                                <td>
+                                    <input type="radio" name="fator11" [value]="-4" formControlName="fator11">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator11" [value]="-2" formControlName="fator11">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator11" [value]="0" formControlName="fator11">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Prática religiosa ou outras práticas coletivas:</td>
+                                <td><input type="radio" name="fator12" [value]="-8" formControlName="fator12"></td>
+                                <td>
+                                    <input type="radio" name="fator12" [value]="-4" formControlName="fator12">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator12" [value]="-2" formControlName="fator12">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator12" [value]="0" formControlName="fator12">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ter emprego:</td>
+                                <td><input type="radio" name="fator13" [value]="-8" formControlName="fator13"></td>
+                                <td>
+                                    <input type="radio" name="fator13" [value]="-4" formControlName="fator13">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator13" [value]="-2" formControlName="fator13">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator13" [value]="0" formControlName="fator13">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Acesso a serviços de saúde mental:</td>
+                                <td><input type="radio" name="fator14" [value]="-8" formControlName="fator14"></td>
+                                <td>
+                                    <input type="radio" name="fator14" [value]="-4" formControlName="fator14">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator14" [value]="-2" formControlName="fator14">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator14" [value]="0" formControlName="fator14">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gravidez e puerpério (programada):</td>
+                                <td><input type="radio" name="fator15" [value]="-8" formControlName="fator15"></td>
+                                <td>
+                                    <input type="radio" name="fator15" [value]="-4" formControlName="fator15">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator15" [value]="-2" formControlName="fator15">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator15" [value]="0" formControlName="fator15">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Boa qualidade de Vida:</td>
+                                <td><input type="radio" name="fator16" [value]="-8" formControlName="fator16"></td>
+                                <td>
+                                    <input type="radio" name="fator16" [value]="-4" formControlName="fator16">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator16" [value]="-2" formControlName="fator16">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator16" [value]="0" formControlName="fator16">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bom sono:</td>
+                                <td><input type="radio" name="fator17" [value]="-8" formControlName="fator17"></td>
+                                <td>
+                                    <input type="radio" name="fator17" [value]="-4" formControlName="fator17">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator17" [value]="-2" formControlName="fator17">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator17" [value]="0" formControlName="fator17">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Boa relação terapêutica:</td>
+                                <td><input type="radio" name="fator18" [value]="-8" formControlName="fator18"></td>
+                                <td>
+                                    <input type="radio" name="fator18" [value]="-4" formControlName="fator18">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator18" [value]="-2" formControlName="fator18">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator18" [value]="0" formControlName="fator18">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="background-color: rgb(250, 198, 198);text-align: center;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fatores de Risco</th>
+                                <th scope="col">Intensidade: alta</th>
+                                <th scope="col">Intensidade: média</th>
+                                <th scope="col">Intensidade: baixa</th>
+                                <th scope="col">Intensidade: Não se Aplica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Doença mental e tentativa de suicídio prévia:</td>
+                                <td><input type="radio" name="fator19" [value]="10" formControlName="fator19"></td>
+                                <td>
+                                    <input type="radio" name="fator19" [value]="5" formControlName="fator19">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator19" [value]="2.5" formControlName="fator19">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator19" [value]="0" formControlName="fator19">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Uso de SPAs – álcool e outras drogas:</td>
+                                <td><input type="radio" name="fator20" [value]="8" formControlName="fator20"></td>
+                                <td>
+                                    <input type="radio" name="fator20" [value]="4" formControlName="fator20">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator20" [value]="2" formControlName="fator20">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator20" [value]="0" formControlName="fator20">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ideação ou plano suicida:</td>
+                                <td><input type="radio" name="fator21" [value]="10" formControlName="fator21"></td>
+                                <td>
+                                    <input type="radio" name="fator21" [value]="5" formControlName="fator21">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator21" [value]="2.5" formControlName="fator21">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator21" [value]="0" formControlName="fator21">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sexo masculino:</td>
+                                <td><input type="radio" name="fator22" [value]="7" formControlName="fator22"></td>
+                                <td>
+                                    <input type="radio" name="fator22" [value]="3.5" formControlName="fator22">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator22" [value]="1.75" formControlName="fator22">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator22" [value]="0" formControlName="fator22">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Idade entre 19 e 49 anos e idosos:</td>
+                                <td><input type="radio" name="fator23" [value]="6" formControlName="fator23"></td>
+                                <td>
+                                    <input type="radio" name="fator23" [value]="3" formControlName="fator23">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator23" [value]="1.5" formControlName="fator23">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator23" [value]="0" formControlName="fator23">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Estados civis: viúvo, divorciado e solteiro:</td>
+                                <td><input type="radio" name="fator24" [value]="8" formControlName="fator24"></td>
+                                <td>
+                                    <input type="radio" name="fator24" [value]="4" formControlName="fator24">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator24" [value]="2" formControlName="fator24">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator24" [value]="0" formControlName="fator24">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Orientação homo ou bissexual:</td>
+                                <td><input type="radio" name="fator25" [value]="6" formControlName="fator25"></td>
+                                <td>
+                                    <input type="radio" name="fator25" [value]="3" formControlName="fator25">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator25" [value]="1.5" formControlName="fator25">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator25" [value]="0" formControlName="fator25">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Grupos étnicos minoritários:</td>
+                                <td><input type="radio" name="fator26" [value]="6" formControlName="fator26"></td>
+                                <td>
+                                    <input type="radio" name="fator26" [value]="3" formControlName="fator26">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator26" [value]="1.5" formControlName="fator26">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator26" [value]="0" formControlName="fator26">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Abuso físico ou sexual:</td>
+                                <td><input type="radio" name="fator27" [value]="8" formControlName="fator27"></td>
+                                <td>
+                                    <input type="radio" name="fator27" [value]="4" formControlName="fator27">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator27" [value]="2" formControlName="fator27">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator27" [value]="0" formControlName="fator27">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Instabilidade familiar ou falta de apoio social:</td>
+                                <td><input type="radio" name="fator28" [value]="8" formControlName="fator28"></td>
+                                <td>
+                                    <input type="radio" name="fator28" [value]="4" formControlName="fator28">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator28" [value]="2" formControlName="fator28">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator28" [value]="0" formControlName="fator28">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Suicídio na família:</td>
+                                <td><input type="radio" name="fator29" [value]="7" formControlName="fator29"></td>
+                                <td>
+                                    <input type="radio" name="fator29" [value]="3.5" formControlName="fator29">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator29" [value]="1.75" formControlName="fator29">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator29" [value]="0" formControlName="fator29">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Problemas conjugais:</td>
+                                <td><input type="radio" name="fator30" [value]="6" formControlName="fator30"></td>
+                                <td>
+                                    <input type="radio" name="fator30" [value]="3" formControlName="fator30">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator30" [value]="1.5" formControlName="fator30">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator30" [value]="0" formControlName="fator30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Desemprego/aposentadoria/problemas financeiros:</td>
+                                <td><input type="radio" name="fator31" [value]="8" formControlName="fator31"></td>
+                                <td>
+                                    <input type="radio" name="fator31" [value]="4" formControlName="fator31">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator31" [value]="2" formControlName="fator31">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator31" [value]="0" formControlName="fator31">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Acesso a meio letal:</td>
+                                <td><input type="radio" name="fator32" [value]="7" formControlName="fator32"></td>
+                                <td>
+                                    <input type="radio" name="fator32" [value]="3.5" formControlName="fator32">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator32" [value]="1.75" formControlName="fator32">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator32" [value]="0" formControlName="fator32">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rigidez cognitiva:</td>
+                                <td><input type="radio" name="fator33" [value]="8" formControlName="fator33"></td>
+                                <td>
+                                    <input type="radio" name="fator33" [value]="4" formControlName="fator33">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator33" [value]="2" formControlName="fator33">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator33" [value]="0" formControlName="fator33">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Perda ou separação dos pais na infância:</td>
+                                <td><input type="radio" name="fator34" [value]="7" formControlName="fator34"></td>
+                                <td>
+                                    <input type="radio" name="fator34" [value]="3.5" formControlName="fator34">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator34" [value]="1.75" formControlName="fator34">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator34" [value]="0" formControlName="fator34">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Perda afetiva recente ou evento estressante:</td>
+                                <td><input type="radio" name="fator35" [value]="7" formControlName="fator35"></td>
+                                <td>
+                                    <input type="radio" name="fator35" [value]="3.5" formControlName="fator35">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator35" [value]="1.75" formControlName="fator35">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator35" [value]="0" formControlName="fator35">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Datas com conteúdo afetivo importante e negativo:</td>
+                                <td><input type="radio" name="fator36" [value]="7" formControlName="fator36"></td>
+                                <td>
+                                    <input type="radio" name="fator36" [value]="3.5" formControlName="fator36">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator36" [value]="1.75" formControlName="fator36">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator36" [value]="0" formControlName="fator36">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Violência doméstica:</td>
+                                <td><input type="radio" name="fator37" [value]="7" formControlName="fator37"></td>
+                                <td>
+                                    <input type="radio" name="fator37" [value]="3.5" formControlName="fator37">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator37" [value]="1.75" formControlName="fator37">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator37" [value]="0" formControlName="fator37">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Desamparo e desesperança:</td>
+                                <td><input type="radio" name="fator38" [value]="9" formControlName="fator38"></td>
+                                <td>
+                                    <input type="radio" name="fator38" [value]="4.5" formControlName="fator38">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator38" [value]="2.25" formControlName="fator38">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator38" [value]="0" formControlName="fator38">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ansiedade intensa:</td>
+                                <td><input type="radio" name="fator39" [value]="7" formControlName="fator39"></td>
+                                <td>
+                                    <input type="radio" name="fator39" [value]="3.5" formControlName="fator39">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator39" [value]="1.75" formControlName="fator39">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator39" [value]="0" formControlName="fator39">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Baixa auto estima, vergonha e humilhação (bullying):</td>
+                                <td><input type="radio" name="fator40" [value]="9" formControlName="fator40"></td>
+                                <td>
+                                    <input type="radio" name="fator40" [value]="4.5" formControlName="fator40">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator40" [value]="2.25" formControlName="fator40">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator40" [value]="0" formControlName="fator40">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Traços de personalidade (impulsividade, agressividade, intolerância à frustração):</td>
+                                <td><input type="radio" name="fator41" [value]="9" formControlName="fator41"></td>
+                                <td>
+                                    <input type="radio" name="fator41" [value]="4.5" formControlName="fator41">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator41" [value]="2.25" formControlName="fator41">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator41" [value]="0" formControlName="fator41">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Estados confusionais orgânicos:</td>
+                                <td><input type="radio" name="fator42" [value]="7" formControlName="fator42"></td>
+                                <td>
+                                    <input type="radio" name="fator42" [value]="3.5" formControlName="fator42">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator42" [value]="1.75" formControlName="fator42">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator42" [value]="0" formControlName="fator42">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Não adere a tratamento:</td>
+                                <td><input type="radio" name="fator43" [value]="7" formControlName="fator43"></td>
+                                <td>
+                                    <input type="radio" name="fator43" [value]="3.5" formControlName="fator43">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator43" [value]="1.75" formControlName="fator43">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator43" [value]="0" formControlName="fator43">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Alta hospitalar recente:</td>
+                                <td><input type="radio" name="fator44" [value]="6" formControlName="fator44"></td>
+                                <td>
+                                    <input type="radio" name="fator44" [value]="3" formControlName="fator44">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator44" [value]="1.5" formControlName="fator44">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator44" [value]="0" formControlName="fator44">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ateus, protestantes tradicionais > católicos, judeus:</td>
+                                <td><input type="radio" name="fator45" [value]="5" formControlName="fator45"></td>
+                                <td>
+                                    <input type="radio" name="fator45" [value]="2.5" formControlName="fator45">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator45" [value]="1.25" formControlName="fator45">
+                                </td>
+                                <td>
+                                    <input type="radio" name="fator45" [value]="0" formControlName="fator45">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Doenças físicas incapacitantes, estigmatizantes, dolorosas e terminais:</td>
+                                <td><input type="radio" (click)="enviar()" name="fator46" [value]="8" formControlName="fator46"></td>
+                                <td>
+                                    <input type="radio" (click)="enviar()" name="fator46" [value]="4" formControlName="fator46">
+                                </td>
+                                <td>
+                                    <input type="radio" (click)="enviar()" name="fator46" [value]="2" formControlName="fator46">
+                                </td>
+                                <td>
+                                    <input type="radio" (click)="enviar()" name="fator46" [value]="0" formControlName="fator46">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+
+        <div class="form-group buttons text-center" style="padding-bottom: 300px;">
+
+
+            <!-- <button class="btn btn-primary ml-2" [routerLink]="'/menu'">Voltar</button> -->
+        </div>
+    </div>
+</form>
